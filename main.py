@@ -39,29 +39,3 @@ if __name__ == "__main__":
 
     for pi in processes:
         pi.join()
-
-
-
-
-# for i in range(10):
-#     node = FLNode()
-# node.create_new_fl_process(name='MNIST', file_extension='csv', num_blocks=9, pp=300,sp=120)
-
-# for i in range(10):
-#     process = FLProcess(node_id=i, fl_process_id=0)
-#     process.start()
-#
-#
-# import numpy as np
-# for i in range(1,10):
-#     node = FLNode(node_id=i)
-#     tmp = np.ones((9,10)) * (i+1)
-#     for j in range(9):
-#         util.save_block(file_path=path.join(node.working_dir, 'FLProcesses', 'FLProcess_0', 'data_to_send'),
-#                         file_name=f'Block_{j}.csv', block_bytes=tmp[j].tobytes())
-
-
-# for i in range(10):
-#     process = FLProcess(node_id=i, fl_process_id=0)
-#     process.start()
-#     process.get_info(0,store_info=True)
