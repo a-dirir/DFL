@@ -112,8 +112,7 @@ contract Registration {
         }
         return false;
     }
-
-    // This is called by the oracle that will report the nodes' evaluations
+    
     function RejectedNode(address nodeAddress, int256 process_id) public {
         require(acceptedOracles[msg.sender], "You are not authorized to report results" );
         require(!resultsReportedForThisNode[process_id][nodeAddress], "Results already reported fot this FL Process and this node");
@@ -124,16 +123,14 @@ contract Registration {
         emit FailedNodeEvent(msg.sender, process_id, nodeAddress, flNodes[nodeAddress].reputation);
     }
    
-    // This is called by the oracle that will report the nodes' evaluations
     function WithdrawnNode(address nodeAddress, int256 process_id) public {
         require(acceptedOracles[msg.sender], "You are not authorized to report results" );
-        require(!resultsReportedForThisNode[process_id][nodeAddress], "Results already reported fot this FL Process");
+        require(!resultsReportedForThisNode[process_id][nodeAddress], "Results already reported ");
         flNodes[nodeAddress].R1.sub(1);
         flNodes[nodeAddress].R3.add(1);
         flNodes[nodeAddress].reputation = calculateReputation(nodeAddress);
         resultsReportedForThisNode[process_id][nodeAddress] = true;
         emit WithdrwanNodeEvent(msg.sender, process_id, nodeAddress, flNodes[nodeAddress].reputation);
-       
     }
 }
 
