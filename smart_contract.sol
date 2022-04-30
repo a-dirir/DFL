@@ -115,7 +115,7 @@ contract Registration {
     
     function RejectedNode(address nodeAddress, int256 process_id) public {
         require(acceptedOracles[msg.sender], "You are not authorized to report results" );
-        require(!resultsReportedForThisNode[process_id][nodeAddress], "Results already reported fot this FL Process and this node");
+        require(!resultsReportedForThisNode[process_id][nodeAddress], "Results already reported ");
         flNodes[nodeAddress].R1.sub(1);
         flNodes[nodeAddress].R2.add(1);
         flNodes[nodeAddress].reputation = calculateReputation(nodeAddress);
